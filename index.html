@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoMarket - Find Your Perfect Car</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <a href="#" class="logo" data-page="home">
+                <i class="fas fa-car-side"></i>
+                <span>AutoMarket</span>
+            </a>
+            <nav class="nav" id="nav">
+                <ul class="nav-list">
+                    <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
+                    <li><a href="#" class="nav-link" data-page="listings">Browse Cars</a></li>
+                    <li><a href="#" class="nav-link" data-page="sell">Sell Your Car</a></li>
+                    <li><a href="#" class="nav-link" data-page="dashboard">Dashboard</a></li>
+                </ul>
+                <div class="nav-auth">
+                    <button class="btn btn-outline" id="loginBtn">Login</button>
+                    <button class="btn btn-primary" id="signupBtn">Sign Up</button>
+                </div>
+            </nav>
+            <button class="mobile-toggle" id="mobileToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main id="mainContent">
+        <!-- Home Page -->
+        <section class="page active" id="homePage">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-bg">
+                    <div class="hero-overlay"></div>
+                </div>
+                <div class="container hero-content">
+                    <h1 class="hero-title">Find Your <span class="accent">Perfect Car</span></h1>
+                    <p class="hero-subtitle">Browse thousands of premium vehicles from trusted sellers</p>
+                    
+                    <!-- Search Bar -->
+                    <div class="search-box">
+                        <div class="search-row">
+                            <div class="search-field">
+                                <i class="fas fa-car"></i>
+                                <select id="searchBrand">
+                                    <option value="">Select Brand</option>
+                                    <option value="bmw">BMW</option>
+                                    <option value="mercedes">Mercedes</option>
+                                    <option value="audi">Audi</option>
+                                    <option value="toyota">Toyota</option>
+                                    <option value="honda">Honda</option>
+                                    <option value="ford">Ford</option>
+                                    <option value="tesla">Tesla</option>
+                                    <option value="porsche">Porsche</option>
+                                </select>
+                            </div>
+                            <div class="search-field">
+                                <i class="fas fa-tag"></i>
+                                <select id="searchModel">
+                                    <option value="">Select Model</option>
+                                    <option value="model-3">Model 3</option>
+                                    <option value="model-s">Model S</option>
+                                    <option value="c-class">C-Class</option>
+                                    <option value="3-series">3 Series</option>
+                                    <option value="a4">A4</option>
+                                    <option value="camry">Camry</option>
+                                </select>
+                            </div>
+                            <div class="search-field">
+                                <i class="fas fa-dollar-sign"></i>
+                                <select id="searchPrice">
+                                    <option value="">Price Range</option>
+                                    <option value="0-20000">Under $20,000</option>
+                                    <option value="20000-40000">$20,000 - $40,000</option>
+                                    <option value="40000-60000">$40,000 - $60,000</option>
+                                    <option value="60000-100000">$60,000 - $100,000</option>
+                                    <option value="100000+">$100,000+</option>
+                                </select>
+                            </div>
+                            <div class="search-field">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <input type="text" placeholder="Location" id="searchLocation">
+                            </div>
+                            <button class="btn btn-primary search-btn" id="searchBtn">
+                                <i class="fas fa-search"></i> Search
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-ctas">
+                        <a href="#" class="btn btn-primary" data-page="listings">
+                            <i class="fas fa-car"></i> Browse Cars
+                        </a>
+                        <a href="#" class="btn btn-outline" data-page="sell">
+                            <i class="fas fa-tag"></i> Sell Your Car
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Featured Cars Section -->
+            <section class="featured section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">Featured <span class="accent">Vehicles</span></h2>
+                        <p class="section-subtitle">Handpicked premium cars just for you</p>
+                    </div>
+                    <div class="car-grid" id="featuredCars">
+                        <!-- Cars will be loaded dynamically -->
+                    </div>
+                    <div class="section-cta">
+                        <a href="#" class="btn btn-outline" data-page="listings">View All Cars <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Brand Categories Section -->
+            <section class="brands section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">Browse by <span class="accent">Brand</span></h2>
+                        <p class="section-subtitle">Find your dream car from top manufacturers</p>
+                    </div>
+                    <div class="brand-grid">
+                        <a href="#" class="brand-card" data-brand="bmw">
+                            <i class="fab fa-bmw"></i>
+                            <span>BMW</span>
+                        </a>
+                        <a href="#" class="brand-card" data-brand="mercedes">
+                            <i class="fas fa-star"></i>
+                            <span>Mercedes</span>
+                        </a>
+                        <a href="#" class="brand-card" data-brand="audi">
+                            <i class="fas fa-ring"></i>
+                            <span>Audi</span>
+                        </a>
+                        <a href="#" class="brand-card" data-brand="toyota">
+                            <i class="fas fa-car"></i>
+                            <span>Toyota</span>
+                        </a>
+                        <a href="#" class="brand-card" data-brand="honda">
+                            <i class="fas fa-car-side"></i>
+                            <span>Honda</span>
+                        </a>
+                        <a href="#" class="brand-card" data-brand="ford">
+                            <i class="fas fa-truck-pickup"></i>
+                            <span>Ford</span>
+                        </a>
+                        <a href="#" class="brand-card" data-brand="tesla">
+                            <i class="fab fa-tesla"></i>
+                            <span>Tesla</span>
+                        </a>
+                        <a href="#" class="brand-card" data-brand="porsche">
+                            <i class="fas fa-flag-checkered"></i>
+                            <span>Porsche</span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Why Choose Us Section -->
+            <section class="features section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">Why Choose <span class="accent">Us</span></h2>
+                        <p class="section-subtitle">Experience the best car buying journey</p>
+                    </div>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h3>Verified Sellers</h3>
+                            <p>All our sellers are verified and trusted to ensure a safe transaction</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <h3>Secure Payments</h3>
+                            <p>Protected payment methods ensure your money is safe</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-headset"></i>
+                            </div>
+                            <h3>Expert Support</h3>
+                            <p>24/7 customer support to help you with any questions</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-truck"></i>
+                            </div>
+                            <h3>Fast Delivery</h3>
+                            <p>Get your new car delivered to your doorstep quickly</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Testimonials Section -->
+            <section class="testimonials section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">What Our <span class="accent">Customers</span> Say</h2>
+                        <p class="section-subtitle">Real reviews from satisfied customers</p>
+                    </div>
+                    <div class="testimonials-grid">
+                        <div class="testimonial-card">
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="testimonial-text">"Found my dream car at an amazing price. The process was smooth and the seller was very professional."</p>
+                            <div class="testimonial-author">
+                                <div class="author-avatar">JD</div>
+                                <div class="author-info">
+                                    <h4>John Doe</h4>
+                                    <span>BMW X5 Owner</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-card">
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="testimonial-text">"Sold my car in just 3 days! Great platform with excellent visibility. Highly recommended."</p>
+                            <div class="testimonial-author">
+                                <div class="author-avatar">SW</div>
+                                <div class="author-info">
+                                    <h4>Sarah Wilson</h4>
+                                    <span>Mercedes Seller</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-card">
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <p class="testimonial-text">"Excellent customer service and a great selection of cars. Would definitely use again!"</p>
+                            <div class="testimonial-author">
+                                <div class="author-avatar">MC</div>
+                                <div class="author-info">
+                                    <h4>Michael Chen</h4>
+                                    <span>Tesla Model 3 Owner</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="cta-section">
+                <div class="container">
+                    <div class="cta-content">
+                        <h2>Ready to Find Your Dream Car?</h2>
+                        <p>Join thousands of happy customers who found their perfect vehicle</p>
+                        <div class="cta-buttons">
+                            <a href="#" class="btn btn-primary" data-page="listings">
+                                <i class="fas fa-car"></i> Browse Cars
+                            </a>
+                            <a href="#" class="btn btn-outline" data-page="sell">
+                                <i class="fas fa-tag"></i> Sell Your Car
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!-- Car Listings Page -->
+        <section class="page" id="listingsPage">
+            <div class="listings-header">
+                <div class="container">
+                    <h1>Browse <span class="accent">Cars</span></h1>
+                    <p>Find your perfect vehicle from our extensive collection</p>
+                </div>
+            </div>
+            <div class="listings-content">
+                <div class="container">
+                    <div class="listings-layout">
+                        <!-- Filters Sidebar -->
+                        <aside class="filters-sidebar">
+                            <div class="filters-header">
+                                <h3><i class="fas fa-filter"></i> Filters</h3>
+                                <button class="clear-filters" id="clearFilters">Clear All</button>
+                            </div>
+                            
+                            <div class="filter-group">
+                                <h4>Price Range</h4>
+                                <div class="price-inputs">
+                                    <input type="number" placeholder="Min" id="minPrice">
+                                    <span>to</span>
+                                    <input type="number" placeholder="Max" id="maxPrice">
+                                </div>
+                            </div>
+                            
+                            <div class="filter-group">
+                                <h4>Brand</h4>
+                                <div class="filter-checkboxes">
+                                    <label><input type="checkbox" value="bmw"> BMW</label>
+                                    <label><input type="checkbox" value="mercedes"> Mercedes</label>
+                                    <label><input type="checkbox" value="audi"> Audi</label>
+                                    <label><input type="checkbox" value="toyota"> Toyota</label>
+                                    <label><input type="checkbox" value="honda"> Honda</label>
+                                    <label><input type="checkbox" value="ford"> Ford</label>
+                                    <label><input type="checkbox" value="tesla"> Tesla</label>
+                                    <label><input type="checkbox" value="porsche"> Porsche</label>
+                                </div>
+                            </div>
+                            
+                            <div class="filter-group">
+                                <h4>Year</h4>
+                                <select id="filterYear">
+                                    <option value="">All Years</option>
+                                    <option value="2024">2024</option>
+                                    <option value="2023">2023</option>
+                                    <option value="2022">2022</option>
+                                    <option value="2021">2021</option>
+                                    <option value="2020">2020</option>
+                                    <option value="2019">2019</option>
+                                    <option value="2018">2018</option>
+                                </select>
+                            </div>
+                            
+                            <div class="filter-group">
+                                <h4>Fuel Type</h4>
+                                <div class="filter-checkboxes">
+                                    <label><input type="checkbox" value="gasoline"> Gasoline</label>
+                                    <label><input type="checkbox" value="diesel"> Diesel</label>
+                                    <label><input type="checkbox" value="electric"> Electric</label>
+                                    <label><input type="checkbox" value="hybrid"> Hybrid</label>
+                                </div>
+                            </div>
+                            
+                            <div class="filter-group">
+                                <h4>Transmission</h4>
+                                <div class="filter-checkboxes">
+                                    <label><input type="checkbox" value="automatic"> Automatic</label>
+                                    <label><input type="checkbox" value="manual"> Manual</label>
+                                </div>
+                            </div>
+                            
+                            <button class="btn btn-primary apply-filters" id="applyFilters">
+                                <i class="fas fa-check"></i> Apply Filters
+                            </button>
+                        </aside>
+                        
+                        <!-- Listings Grid -->
+                        <div class="listings-main">
+                            <div class="listings-toolbar">
+                                <span class="results-count"><span id="resultsCount">12</span> cars found</span>
+                                <div class="sort-options">
+                                    <label>Sort by:</label>
+                                    <select id="sortSelect">
+                                        <option value="featured">Featured</option>
+                                        <option value="price-low">Price: Low to High</option>
+                                        <option value="price-high">Price: High to Low</option>
+                                        <option value="newest">Newest First</option>
+                                        <option value="oldest">Oldest First</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="car-grid" id="listingsGrid">
+                                <!-- Cars will be loaded dynamically -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Car Details Page -->
+        <section class="page" id="detailsPage">
+            <div class="container">
+                <button class="back-btn" id="backToListings">
+                    <i class="fas fa-arrow-left"></i> Back to Listings
+                </button>
+                
+                <div class="details-layout">
+                    <!-- Image Gallery -->
+                    <div class="details-gallery">
+                        <div class="main-image">
+                            <img id="mainCarImage" src="" alt="Car Image">
+                            <span class="featured-badge" id="carFeaturedBadge">Featured</span>
+                        </div>
+                        <div class="thumbnail-grid" id="thumbnailGrid">
+                            <!-- Thumbnails will be loaded dynamically -->
+                        </div>
+                    </div>
+                    
+                    <!-- Car Info -->
+                    <div class="details-info">
+                        <div class="details-header">
+                            <h1 id="carTitle">Car Title</h1>
+                            <div class="car-price" id="carPrice">$0</div>
+                        </div>
+                        
+                        <div class="car-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> <span id="carLocation">Location</span></span>
+                            <span><i class="fas fa-clock"></i> Posted <span id="carPostedDate">Date</span></span>
+                        </div>
+                        
+                        <div class="car-specs">
+                            <div class="spec-item">
+                                <i class="fas fa-calendar"></i>
+                                <div>
+                                    <span class="spec-label">Year</span>
+                                    <span class="spec-value" id="carYear">-</span>
+                                </div>
+                            </div>
+                            <div class="spec-item">
+                                <i class="fas fa-tachometer-alt"></i>
+                                <div>
+                                    <span class="spec-label">Mileage</span>
+                                    <span class="spec-value" id="carMileage">-</span>
+                                </div>
+                            </div>
+                            <div class="spec-item">
+                                <i class="fas fa-gas-pump"></i>
+                                <div>
+                                    <span class="spec-label">Fuel Type</span>
+                                    <span class="spec-value" id="carFuel">-</span>
+                                </div>
+                            </div>
+                            <div class="spec-item">
+                                <i class="fas fa-cog"></i>
+                                <div>
+                                    <span class="spec-label">Transmission</span>
+                                    <span class="spec-value" id="carTransmission">-</span>
+                                </div>
+                            </div>
+                            <div class="spec-item">
+                                <i class="fas fa-engine"></i>
+                                <div>
+                                    <span class="spec-label">Engine</span>
+                                    <span class="spec-value" id="carEngine">-</span>
+                                </div>
+                            </div>
+                            <div class="spec-item">
+                                <i class="fas fa-palette"></i>
+                                <div>
+                                    <span class="spec-label">Color</span>
+                                    <span class="spec-value" id="carColor">-</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="seller-card">
+                            <h3>Seller Information</h3>
+                            <div class="seller-info">
+                                <div class="seller-avatar">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="seller-details">
+                                    <h4 id="sellerName">Seller Name</h4>
+                                    <p><i class="fas fa-phone"></i> <span id="sellerPhone">-</span></p>
+                                    <p><i class="fas fa-envelope"></i> <span id="sellerEmail">-</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="action-buttons">
+                            <button class="btn btn-primary" id="contactSellerBtn">
+                                <i class="fas fa-phone"></i> Contact Seller
+                            </button>
+                            <button class="btn btn-outline" id="requestInfoBtn">
+                                <i class="fas fa-envelope"></i> Request Info
+                            </button>
+                            <button class="btn btn-secondary" id="financeBtn">
+                                <i class="fas fa-calculator"></i> Finance Calculator
+                            </button>
+                            <button class="btn btn-favorite" id="favoriteBtn">
+                                <i class="far fa-heart"></i> Save
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Description -->
+                <div class="details-description">
+                    <h2>Description</h2>
+                    <p id="carDescription">-</p>
+                </div>
+                
+                <!-- Similar Cars -->
+                <div class="similar-cars">
+                    <h2>Similar <span class="accent">Cars</span></h2>
+                    <div class="car-grid" id="similarCars">
+                        <!-- Similar cars will be loaded dynamically -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sell Your Car Page -->
+        <section class="page" id="sellPage">
+            <div class="sell-header">
+                <div class="container">
+                    <h1>Sell Your <span class="accent">Car</span></h1>
+                    <p>Get the best value for your vehicle in minutes</p>
+                </div>
+            </div>
+            <div class="container">
+                <div class="sell-form-container">
+                    <!-- Progress Steps -->
+                    <div class="form-steps">
+                        <div class="step active" data-step="1">
+                            <div class="step-number">1</div>
+                            <span>Images</span>
+                        </div>
+                        <div class="step" data-step="2">
+                            <div class="step-number">2</div>
+                            <span>Basic Info</span>
+                        </div>
+                        <div class="step" data-step="3">
+                            <div class="step-number">3</div>
+                            <span>Details</span>
+                        </div>
+                        <div class="step" data-step="4">
+                            <div class="step-number">4</div>
+                            <span>Pricing</span>
+                        </div>
+                        <div class="step" data-step="5">
+                            <div class="step-number">5</div>
+                            <span>Contact</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Form -->
+                    <form id="sellCarForm" class="sell-form">
+                        <!-- Step 1: Images -->
+                        <div class="form-step active" data-step="1">
+                            <h2>Upload Car Images</h2>
+                            <div class="image-upload-area" id="imageUploadArea">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <p>Drag & drop images here or click to browse</p>
+                                <span>Maximum 10 images, JPG or PNG</span>
+                                <input type="file" id="carImages" multiple accept="image/*" hidden>
+                            </div>
+                            <div class="image-previews" id="imagePreviews"></div>
+                        </div>
+                        
+                        <!-- Step 2: Basic Info -->
+                        <div class="form-step" data-step="2">
+                            <h2>Basic Information</h2>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Brand *</label>
+                                    <select id="carBrand" required>
+                                        <option value="">Select Brand</option>
+                                        <option value="bmw">BMW</option>
+                                        <option value="mercedes">Mercedes</option>
+                                        <option value="audi">Audi</option>
+                                        <option value="toyota">Toyota</option>
+                                        <option value="honda">Honda</option>
+                                        <option value="ford">Ford</option>
+                                        <option value="tesla">Tesla</option>
+                                        <option value="porsche">Porsche</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Model *</label>
+                                    <input type="text" id="carModel" placeholder="e.g., X5 40i" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Year *</label>
+                                    <select id="carYearSelect" required>
+                                        <option value="">Select Year</option>
+                                        <option value="2024">2024</option>
+                                        <option value="2023">2023</option>
+                                        <option value="2022">2022</option>
+                                        <option value="2021">2021</option>
+                                        <option value="2020">2020</option>
+                                        <option value="2019">2019</option>
+                                        <option value="2018">2018</option>
+                                        <option value="2017">2017</option>
+                                        <option value="2016">2016</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Location *</label>
+                                    <input type="text" id="carLocationInput" placeholder="City, State" required>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 3: Details -->
+                        <div class="form-step" data-step="3">
+                            <h2>Vehicle Details</h2>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Mileage *</label>
+                                    <input type="number" id="carMileageInput" placeholder="Miles" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Fuel Type *</label>
+                                    <select id="carFuelType" required>
+                                        <option value="">Select Fuel Type</option>
+                                        <option value="gasoline">Gasoline</option>
+                                        <option value="diesel">Diesel</option>
+                                        <option value="electric">Electric</option>
+                                        <option value="hybrid">Hybrid</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Transmission *</label>
+                                    <select id="carTransmissionSelect" required>
+                                        <option value="">Select Transmission</option>
+                                        <option value="automatic">Automatic</option>
+                                        <option value="manual">Manual</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Engine</label>
+                                    <input type="text" id="carEngineInput" placeholder="e.g., 3.0L TwinPower Turbo">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Color *</label>
+                                <input type="text" id="carColorInput" placeholder="e.g., Alpine White" required>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 4: Pricing -->
+                        <div class="form-step" data-step="4">
+                            <h2>Pricing & Description</h2>
+                            <div class="form-group">
+                                <label>Asking Price ($) *</label>
+                                <input type="number" id="carPriceInput" placeholder="e.g., 45000" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Description *</label>
+                                <textarea id="carDescriptionInput" rows="5" placeholder="Describe your car's condition, features, and any upgrades..." required></textarea>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 5: Contact -->
+                        <div class="form-step" data-step="5">
+                            <h2>Contact Information</h2>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Your Name *</label>
+                                    <input type="text" id="sellerNameInput" placeholder="Full Name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Phone Number *</label>
+                                    <input type="tel" id="sellerPhoneInput" placeholder="(555) 123-4567" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Email Address *</label>
+                                <input type="email" id="sellerEmailInput" placeholder="your@email.com" required>
+                            </div>
+                        </div>
+                        
+                        <!-- Form Navigation -->
+                        <div class="form-navigation">
+                            <button type="button" class="btn btn-outline" id="prevStep" disabled>
+                                <i class="fas fa-arrow-left"></i> Previous
+                            </button>
+                            <button type="button" class="btn btn-primary" id="nextStep">
+                                Next <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- User Dashboard Page -->
+        <section class="page" id="dashboardPage">
+            <div class="dashboard-container">
+                <!-- Dashboard Sidebar -->
+                <aside class="dashboard-sidebar">
+                    <div class="user-profile">
+                        <div class="user-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <h3 id="dashboardUserName">Guest User</h3>
+                        <p>Member since 2024</p>
+                    </div>
+                    <nav class="dashboard-nav">
+                        <a href="#" class="active" data-tab="listings">
+                            <i class="fas fa-car"></i> My Listings
+                        </a>
+                        <a href="#" data-tab="messages">
+                            <i class="fas fa-envelope"></i> Messages
+                            <span class="badge">3</span>
+                        </a>
+                        <a href="#" data-tab="favorites">
+                            <i class="fas fa-heart"></i> Favorites
+                        </a>
+                        <a href="#" data-tab="settings">
+                            <i class="fas fa-cog"></i> Settings
+                        </a>
+                        <a href="#" id="logoutBtn">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </a>
+                    </nav>
+                </aside>
+                
+                <!-- Dashboard Content -->
+                <div class="dashboard-content">
+                    <!-- My Listings Tab -->
+                    <div class="dashboard-tab active" data-tab="listings">
+                        <div class="tab-header">
+                            <h2>My Listings</h2>
+                            <button class="btn btn-primary" data-page="sell">
+                                <i class="fas fa-plus"></i> Add New
+                            </button>
+                        </div>
+                        <div class="listings-table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Car</th>
+                                        <th>Price</th>
+                                        <th>Status</th>
+                                        <th>Views</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="myListingsTable">
+                                    <!-- Listings will be loaded dynamically -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <!-- Messages Tab -->
+                    <div class="dashboard-tab" data-tab="messages">
+                        <div class="tab-header">
+                            <h2>Messages</h2>
+                        </div>
+                        <div class="messages-list">
+                            <div class="message-item unread">
+                                <div class="message-avatar">JD</div>
+                                <div class="message-content">
+                                    <h4>John Doe</h4>
+                                    <p>Hi, is this car still available?</p>
+                                    <span class="message-time">2 hours ago</span>
+                                </div>
+                            </div>
+                            <div class="message-item unread">
+                                <div class="message-avatar">SW</div>
+                                <div class="message-content">
+                                    <h4>Sarah Wilson</h4>
+                                    <p>Can I schedule a test drive?</p>
+                                    <span class="message-time">1 day ago</span>
+                                </div>
+                            </div>
+                            <div class="message-item">
+                                <div class="message-avatar">MC</div>
+                                <div class="message-content">
+                                    <h4>Michael Chen</h4>
+                                    <p>Thank you for the quick response!</p>
+                                    <span class="message-time">3 days ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Favorites Tab -->
+                    <div class="dashboard-tab" data-tab="favorites">
+                        <div class="tab-header">
+                            <h2>Saved Cars</h2>
+                        </div>
+                        <div class="car-grid" id="favoritesGrid">
+                            <!-- Favorites will be loaded dynamically -->
+                        </div>
+                    </div>
+                    
+                    <!-- Settings Tab -->
+                    <div class="dashboard-tab" data-tab="settings">
+                        <div class="tab-header">
+                            <h2>Account Settings</h2>
+                        </div>
+                        <form class="settings-form">
+                            <div class="form-group">
+                                <label>Full Name</label>
+                                <input type="text" id="settingsName" placeholder="Your Name">
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" id="settingsEmail" placeholder="your@email.com">
+                            </div>
+                            <div class="form-group">
+                                <label>Phone</label>
+                                <input type="tel" id="settingsPhone" placeholder="(555) 123-4567">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" id="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="#" class="footer-logo">
+                        <i class="fas fa-car-side"></i>
+                        <span>AutoMarket</span>
+                    </a>
+                    <p>Your trusted online car marketplace. Find your perfect car or sell yours quickly and safely.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#" data-page="home">Home</a></li>
+                        <li><a href="#" data-page="listings">Browse Cars</a></li>
+                        <li><a href="#" data-page="sell">Sell Your Car</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Safety Tips</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to get the latest updates on new cars and offers.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Enter your email">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 AutoMarket. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="closeLoginModal">&times;</button>
+            <h2>Welcome Back</h2>
+            <p>Login to your AutoMarket account</p>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" placeholder="your@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" placeholder="Enter your password" required>
+                </div>
+                <div class="form-options">
+                    <label>
+                        <input type="checkbox"> Remember me
+                    </label>
+                    <a href="#">Forgot password?</a>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Login</button>
+            </form>
+            <div class="social-login">
+                <p>Or login with</p>
+                <div class="social-buttons">
+                    <button class="social-btn google">
+                        <i class="fab fa-google"></i> Google
+                    </button>
+                    <button class="social-btn facebook">
+                        <i class="fab fa-facebook-f"></i> Facebook
+                    </button>
+                </div>
+            </div>
+            <p class="modal-switch">Don't have an account? <a href="#" id="switchToSignup">Sign Up</a></p>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div class="modal" id="signupModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="closeSignupModal">&times;</button>
+            <h2>Create Account</h2>
+            <p>Join AutoMarket today</p>
+            <form id="signupForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <input type="text" placeholder="First Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Last Name</label>
+                        <input type="text" placeholder="Last Name" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" placeholder="your@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" placeholder="Create a password" required>
+                </div>
+                <div class="form-group">
+                    <label>Confirm Password</label>
+                    <input type="password" placeholder="Confirm your password" required>
+                </div>
+                <label class="terms">
+                    <input type="checkbox" required> I agree to the Terms of Service and Privacy Policy
+                </label>
+                <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+            </form>
+            <p class="modal-switch">Already have an account? <a href="#" id="switchToLogin">Login</a></p>
+        </div>
+    </div>
+
+    <!-- Contact Seller Modal -->
+    <div class="modal" id="contactModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="closeContactModal">&times;</button>
+            <h2>Contact Seller</h2>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label>Your Name</label>
+                    <input type="text" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <label>Your Email</label>
+                    <input type="email" placeholder="your@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Your Phone</label>
+                    <input type="tel" placeholder="(555) 123-4567">
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea rows="4" placeholder="I'm interested in this car..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Finance Calculator Modal -->
+    <div class="modal" id="financeModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="closeFinanceModal">&times;</button>
+            <h2>Finance Calculator</h2>
+            <form id="financeForm">
+                <div class="form-group">
+                    <label>Vehicle Price ($)</label>
+                    <input type="number" id="financePrice" placeholder="Enter price">
+                </div>
+                <div class="form-group">
+                    <label>Down Payment ($)</label>
+                    <input type="number" id="financeDown" placeholder="Enter down payment">
+                </div>
+                <div class="form-group">
+                    <label>Loan Term</label>
+                    <select id="financeTerm">
+                        <option value="24">24 months</option>
+                        <option value="36">36 months</option>
+                        <option value="48">48 months</option>
+                        <option value="60" selected>60 months</option>
+                        <option value="72">72 months</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Interest Rate (%)</label>
+                    <input type="number" id="financeRate" placeholder="e.g., 5.9" step="0.1">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Calculate</button>
+            </form>
+            <div class="finance-result" id="financeResult" style="display: none;">
+                <h3>Monthly Payment</h3>
+                <div class="monthly-payment" id="monthlyPayment">$0</div>
+                <div class="payment-details">
+                    <p>Total Interest: <span id="totalInterest">$0</span></p>
+                    <p>Total Amount: <span id="totalAmount">$0</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMessage">Success!</span>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
+
